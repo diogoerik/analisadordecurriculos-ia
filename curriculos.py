@@ -8,7 +8,7 @@ st.set_page_config(page_title="Analisador de Currículos IA", page_icon="📄", 
 
 # Sua chave de API do Gemini
 import streamlit as st
-API_KEY = st.secrets["AQ.Ab8RN6LHLGRsJyQtqLXgYJZKZ5WeIEG4Zxy71BSKfxq4y6LvQg"]
+API_KEY = st.secrets["GEMINI_API_KEY"]
 
 # Estilo visual moderno via CSS corporativo e rodapé fixo
 st.markdown("""
