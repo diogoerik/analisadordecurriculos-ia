@@ -6,7 +6,7 @@ from google.genai import types
 # Configuração da página web (Título e Layout)
 st.set_page_config(page_title="Analisador de Currículos IA", page_icon="📄", layout="centered")
 
-# Sua chave de API do Gemini
+# Comando de segurança para buscar a chave do painel do Streamlit
 import streamlit as st
 API_KEY = st.secrets["GEMINI_API_KEY"]
 
@@ -48,7 +48,7 @@ texto_vaga = st.text_area(
     placeholder="Exemplo: Vaga de Estágio em Administração. Requisitos: Cursando superior, conhecimento em Excel..."
 )
 
-# 2. Upload do Currículo (Visual arrastar e soltar muito moderno)
+# 2. Upload do Currículo
 st.subheader("2. Currículo do Candidato")
 arquivo_pdf = st.file_uploader("Faça o upload do currículo em formato PDF", type=["pdf"])
 
@@ -63,7 +63,7 @@ def extrair_texto(pdf_file):
     except Exception as e:
         return f"Erro ao ler PDF: {str(e)}"
 
-st.write("") # Espaçador
+st.write("") 
 
 # 3. Processamento e Exibição do Resultado
 if st.button("Iniciar Análise Estruturada"):
@@ -71,8 +71,6 @@ if st.button("Iniciar Análise Estruturada"):
         st.warning("Por favor, insira a descrição da vaga antes de continuar.")
     elif not arquivo_pdf:
         st.warning("Por favor, selecione ou arraste um arquivo de currículo em PDF.")
-    elif API_KEY == "SUA_CHAVE_AQUI":
-        st.error("Configure sua chave de API do Gemini na linha 12 para ativar o sistema.")
     else:
         with st.spinner("Efetuando leitura do PDF e gerando parecer técnico..."):
             texto_curriculo = extrair_texto(arquivo_pdf)
@@ -104,7 +102,6 @@ if st.button("Iniciar Análise Estruturada"):
             except Exception as e:
                 st.error(f"Falha de comunicação com o motor de IA: {str(e)}")
 
-# Adiciona espaço no final para o conteúdo não sumir atrás do rodapé fixo
 st.markdown("<br><br><br>", unsafe_allow_html=True)
 
 # --- RODAPÉ ACADÊMICO FIXO ---
