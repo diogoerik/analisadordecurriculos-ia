@@ -7,7 +7,8 @@ from google.genai import types
 st.set_page_config(page_title="Analisador de Currículos IA", page_icon="📄", layout="centered")
 
 # Sua chave de API do Gemini
-API_KEY = "AQ.Ab8RN6KXsiKamTDM-6cnYyCoPAhFvb4iIpaXlK0ov_GN93nLKA"
+import streamlit as st
+API_KEY = st.secrets["AQ.Ab8RN6LHLGRsJyQtqLXgYJZKZ5WeIEG4Zxy71BSKfxq4y6LvQg"]
 
 # Estilo visual moderno via CSS corporativo e rodapé fixo
 st.markdown("""
